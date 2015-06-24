@@ -7495,6 +7495,17 @@ See URL `http://www.ruby-doc.org/stdlib-2.0.0/libdoc/yaml/rdoc/YAML.html'."
           "at line " line " column " column  line-end))
   :modes yaml-mode)
 
+(flycheck-define-checker json-python
+  "JSON Syntax check using Python JSON module.
+
+See URL `https://docs.python.org/3/library/json.html'."
+  :command ("python" "-mjson.tool" source)
+  :error-patterns
+  ((error line-start "No JSON object could be decoded" line-end)
+   (error line-start (message) ": line " line " column " column
+          " (char " (one-or-more digit) ")" line-end))
+  :modes 'json-mode)
+
 (provide 'flycheck)
 
 ;; Local Variables:
