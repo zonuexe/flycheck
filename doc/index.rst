@@ -15,8 +15,8 @@ warnings and errors directly in the buffer, or in an optional :ref:`error list
 
 Out of the box Flycheck supports over :ref:`40 different programming languages
 <flycheck-languages>` with more than 80 different syntax checking tools, and
-comes with a :ref:`simple interface <flycheck-definitions>` to define new syntax
-checkers.
+comes with a :ref:`simple interface <flycheck-developers-guide>` to define new
+syntax checkers.
 
 Many :ref:`3rd party extensions <flycheck-extensions>` provide new syntax
 checkers and other features like alternative error displays or mode line
@@ -38,7 +38,7 @@ run ``M-x eval-buffer``:
 
    (require 'package)
    (add-to-list 'package-archives
-                '("melpa" . "http://stable.melpa.org/packages/") t)
+                '("MELPA Stable" . "http://stable.melpa.org/packages/") t)
    (package-initialize)
    (package-refresh-contents)
 
@@ -46,11 +46,28 @@ run ``M-x eval-buffer``:
 
    (global-flycheck-mode)
 
+*On MacOS* also add the following to :ref:`fix your $PATH environment variable
+<flycheck-macos-exec-path-from-shell>`:
+
+.. code-block:: cl
+
+   (package-install 'exec-path-from-shell)
+   (exec-path-from-shell-initialize)
+
 For a permanent installation of Flycheck follow the :ref:`Installation
 <flycheck-installation>` instructions.  For a gentle introduction into Flycheck
 features go through :ref:`Quickstart <flycheck-quickstart>` guide.
 
+.. important::
+
+   If Flycheck fails to run properly or gives you any error messages please take
+   a look at the :ref:`troubleshooting section <flycheck-troubleshooting>` which
+   covers some common setup issues and helps you debug and fix problems with
+   Flycheck.
+
 .. _`known windows issues`: https://github.com/flycheck/flycheck/labels/B-Windows%20only
+
+.. _flycheck-user-guide:
 
 The User Guide
 ==============
@@ -59,19 +76,11 @@ The User Guide provides installation and usage help for Flycheck.  It starts
 with installation instructions and a quick start tutorial and then focuses on an
 in-depth references of all parts of Flycheck.
 
-We are currently in the process of converting the old Texinfo manual to Sphinx.
-Meanwhile you can read a simple HTML version of the old manual at
-:download:`flycheck.html <legacy/flycheck.html>`.
-
-.. todo:: Port the old manual
-
-   Meanwhile see :download:`flycheck.html <legacy/flycheck.html>` for a simple
-   HTML version of the old manual.
-
 .. toctree::
 
    user/installation
    user/quickstart
+   user/troubleshooting
    user/syntax-checks
    user/syntax-checkers
    user/error-reports
@@ -79,17 +88,7 @@ Meanwhile you can read a simple HTML version of the old manual at
    user/error-interaction
    user/flycheck-versus-flymake
 
-The Developer Guide
-===================
-
-The Developer Guide shows how to write syntax checkers for Flycheck and how to
-extend Flycheck.
-
-
-.. todo:: Port the extending section from the old manual
-
-   Meanwhile see :download:`flycheck.html <legacy/flycheck.html>` for a simple
-   HTML version of the old manual.
+.. _flycheck-community-guide:
 
 The Community Guide
 ===================
@@ -104,6 +103,20 @@ community.
    community/get-help
    community/people
 
+.. _flycheck-developer-guide:
+
+The Developer Guide
+===================
+
+The Developer Guide shows how extend Flycheck and how to write syntax checkers
+for Flycheck.
+
+.. toctree::
+
+   developer/developing
+
+.. _flycheck-contributor-guide:
+
 The Contributor Guide
 =====================
 
@@ -112,6 +125,7 @@ The Contributor Guide explains how to contribute to Flycheck.
 .. toctree::
 
    contributor/contributing
+   contributor/style-guide
    contributor/maintaining
 
 Indices and Tables
@@ -157,10 +171,3 @@ Public License.  See :ref:`flycheck-cc-by-sa` for a copy of the license.
    :maxdepth: 2
 
    licenses
-
-.. FIXME: Remove when the old manual is ported completed
-
-TODO
-====
-
-.. todolist::

@@ -1,9 +1,11 @@
 ;;; run.el --- Flycheck: Test runner    -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2017 Flycheck contributors
 ;; Copyright (C) 2014-2016 Sebastian Wiesner and Flycheck contributors
 
 ;; Author: Sebastian Wiesner <swiesner@lunaryorn.com>
-;; Maintainer: Sebastian Wiesner <swiesner@lunaryorn.com>
+;; Maintainer: Clément Pit-Claudel <clement.pitclaudel@live.com>
+;;             fmdkdd <fmdkdd@gmail.com>
 ;; URL: https://www.flycheck.org
 
 ;; This file is not part of GNU Emacs.
@@ -107,10 +109,12 @@ Node `(ert)Test Selectors' for information about test selectors."
   "Main entry point of the test runner."
   (let* ((load-prefer-newer t)
          (source-directory (locate-dominating-file flycheck-runner-file "Cask"))
-         (pkg-rel-dir (format ".cask/%s/elpa" emacs-version)))
+         (pkg-rel-dir (format ".cask/%s.%S/elpa"
+                              emacs-major-version
+                              emacs-minor-version)))
 
-    ;; standardise on the C locale so we can be sure that none of
-    ;; gcc, ghc and gfortran will output smartquotes
+    ;; Standardise on the C locale to prevent programs from writing fancy
+    ;; unicode characters and thus make test output predictable
     (setenv "LC_ALL" "C")
 
     (setq package-user-dir (expand-file-name pkg-rel-dir source-directory))
@@ -120,12 +124,6 @@ Node `(ert)Test Selectors' for information about test selectors."
              emacs-version (format-time-string "%F" emacs-build-time))
 
     (let ((debug-on-error t))
-      (load (expand-file-name "flycheck" source-directory))
-      (load (expand-file-name "flycheck-ert" source-directory))
-      (load (expand-file-name "flycheck-test"
-                              (file-name-directory flycheck-runner-file)))))
-
-  (let ((debug-on-error t))
-    (flycheck-run-tests-batch-and-exit)))
+      (flycheck-run-tests-batch-and-exit))))
 
 ;;; run.el ends here

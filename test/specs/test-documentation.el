@@ -1,5 +1,6 @@
 ;;; test-documentation.el --- Flycheck Specs: Documentation -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2018 Flycheck contributors
 ;; Copyright (C) 2013-2016 Sebastian Wiesner and Flycheck contributors
 
 ;; Author: Sebastian Wiesner <swiesner@lunaryorn.com>
@@ -40,16 +41,19 @@
         (let ((match (intern (match-string 1))))
           (cl-pushnew match matches))
         (-when-let (match (match-string 2))
+          (cl-pushnew (intern match) matches))
+        (-when-let (match (match-string 3))
           (cl-pushnew (intern match) matches))))
     matches))
 
 (defconst flycheck/checker-re
   (rx bol "   .. syntax-checker:: " (group (1+ nonl)) "\n"
-      (? "                       " (group (1+ nonl)) eol)))
+      (? "                       " (group (1+ nonl)) "\n")
+      (? "                       " (group (1+ nonl))) eol))
 
-(defconst flycheck/option-re
-  (rx bol "      .. option:: " (group (1+ nonl)) "\n"
-      (? "                  " (group (1+ nonl)) eol)))
+(defconst flycheck/defcustom-re
+  (rx bol "      .. defcustom:: " (group (1+ nonl)) "\n"
+      (? "                     " (group (1+ nonl)) eol)))
 
 (describe "Documentation"
   (let* ((source-dir (locate-dominating-file default-directory "Cask"))
@@ -68,7 +72,7 @@
                   :to-equal nil)))
 
       (describe "Options"
-        (let ((documented-options (flycheck/collect-matches flycheck/option-re
+        (let ((documented-options (flycheck/collect-matches flycheck/defcustom-re
                                                             languages))
               (all-options (seq-mapcat (lambda (c)
                                          (flycheck-checker-get c 'option-vars))

@@ -1,10 +1,149 @@
-29-cvs (in development)
+32-cvs (in development)
 =======================
+
+- **Breaking changes**
+
+  - Remove ``javascript-jscs`` checker
+  - Remove ``elixir-dogma`` checker [GH-1450]
+  - ``rust-cargo`` now requires Rust 1.17 or newer [GH-1289]
+  - Rename ``flycheck-cargo-rustc-args`` to ``flycheck-cargo-check-args``
+    [GH-1289]
+  - ``rust-cargo`` does not use the variable ``flycheck-rust-args`` anymore
+    [GH-1289]
+  - Improve detection of default directory for ``haskell-ghc`` to consider
+    ``hpack`` project files [GH-1435]
+
+- New syntax checkers:
+
+  - Jsonnet with ``jsonnet`` [GH-1345]
+  - Tcl with ``nagelfar`` [GH-1365]
+  - CWL with ``schema-salad-tool`` [GH-1361]
+  - MarkdownLint CLI with ``markdownlint`` [GH-1366]
+  - Rust with ``rust-clippy`` [GH-1385]
+  - VHDL with ``ghdl`` [GH-1160]
+
+- New features:
+
+  - Add ``flycheck-cppcheck-suppressions-file`` to pass a suppressions
+    file to cppcheck [GH-1329]
+  - Add ``--force-exclusion`` flag to ``rubocop`` command [GH-1348]
+  - Add ``flycheck-ghc-stack-project-file`` for the
+    ``haskell-stack-ghc`` checker. [GH-1316]
+  - Add ``flycheck-perl-module-list`` to use specified modules when
+    syntax checking code with the ``perl`` checker.
+  - Add ``flycheck-sh-bash-args`` to pass arguments to ``sh-bash`` [GH-1439].
+
+- Improvements
+
+  - When a checker returns errors for another file, they will be displayed
+    instead of ignored.  They can be navigated to from the error list.
+    This change helps with compiled languages, where an error in another file
+    may cause the current file to be considered invalid. [GH-1427]
+  - Use Emacs' native XML parsing when libXML fails.  This behavior can be
+    changed by customizing ``flycheck-xml-parser`` [GH-1349]
+  - Changed parsing of ESLint output from checkstyle XML to JSON [GH-1350]
+  - Flycheck will execute ``rubocop`` from directory where ``Gemfile`` is
+    located. If ``Gemfile`` does not exist, old behaviour of running command
+    from directory where ``.rubocop.yml`` is found will be used [GH-1368]
+  - ``rust-cargo`` now uses ``cargo check`` and ``cargo test`` [GH-1289]
+  - ``python-pylint`` and ``python-flake8`` are now invoked with ``python -c``,
+    to make it easier to change between Python 2 and Python 3 [GH-1113]
+
+31 (Oct 07, 2017)
+=================
+
+- **Breaking changes**
+
+  - ``rust-cargo`` now requires Rust 1.15 or newer [GH-1201]
+  - Remove javascript-gjslint checker
+
+- New syntax checkers:
+
+  - Protobuf with ``protoc`` [GH-1125]
+  - systemd-analyze with ``systemd-analyze`` [GH-1135]
+  - Nix with ``nix-instantiate`` [GH-1164]
+  - Dockerfile with ``hadolint`` [GH-1194]
+  - AsciiDoc with ``asciidoctor`` [GH-1167]
+  - CSS/SCSS/LESS with ``stylelint`` [GH-903]
+  - Ruby with ``reek`` [GH-1244]
+  - Go with ``megacheck`` [GH-1290]
+  - LLVM IR with ``llc`` [GH-1302]
+  - Text prose with ``proselint`` [GH-1304]
+
+- New features:
+
+  - Add ``flycheck-xml-xmlstarlet-xsd-path`` and ``flycheck-xml-xmllint-xsd-path`` to
+    specify an XSD schema to validate XML documents against [GH-1272]
+  - Add ``flycheck-tslint-args`` to pass additional arguments to tslint [GH-1186]
+  - Add an error explainer to the ``rpm-rpmlint`` checker using
+    ``rpmlint -I`` [GH-1235]
+  - Add ``flycheck-emacs-lisp-check-declare`` to check function declaration in
+    the ``emacs-lisp`` checker [GH-1286]
+  - Add ``flycheck-shellcheck-follow-sources`` to check included files when
+    using the ``sh-shellcheck`` checker [GH-1256]
+
+- Improvements:
+
+  - Use option ``flycheck-go-build-tags`` for ``go-test``,
+    ``go-vet`` and ``go-errcheck`` as well.
+  - Add a revert function to ``flycheck-verify-setup``, so hitting
+    ``g`` reloads the buffer.
+  - Make sure the erlang compiler is only run on compilable files.
+  - ``flycheck-tslint`` does not crash any more on deprecation notices [GH-1174]
+  - ``rust-cargo`` now checks integration tests, examples and benchmarks
+    [GH-1206]
+  - ``rust-cargo`` does not use ``flycheck-rust-library-path`` anymore, as
+    dependencies are taken care of by Cargo [GH-1206]
+  - ``c/c++-gcc`` checker now works from GCC 4.4 and up [GH-1226]
+
+30 (Oct 12, 2016)
+=================
+
+- **Breaking changes**
+
+  - Flycheck now requires flake8 3.0 or newer
+  - Remove ``--config`` option in ``lua-luacheck`` in favour of ``luacheck``'s
+    own ``.luacheckrc`` detection. Therefore ``flycheck-luacheckrc`` is
+    no longer used [GH-1057]
+  - ``:modes`` is now mandatory for syntax checker definitions [GH-1071]
+  - Remove jade checker [GH-951] [GH-1084]
+  - Remove ``javascript-eslintrc`` and instead rely on eslint's own configuration file
+    search [GH-1085]
+  - ``C-c ! e`` explains errors now [GH-1122]
+
+- New syntax checkers:
+
+  - Elixir with ``dogma`` [GH-969]
+  - sass and scss with ``sass-lint`` [GH-1070]
+  - Pug [GH-951] [GH-1084]
+
+- New features:
+
+  - Add ``flycheck-cargo-rustc-args`` to pass multiple arguments to cargo rustc
+    subcommand [GH-1079]
+  - Add ``:error-explainer`` to ``flycheck-define-checker`` and
+    ``flycheck-explain-error-at-point`` to display explanations of errors
+    [GH-1122]
+  - Add an error explainer to the ``rust`` and ``rust-cargo`` checkers using
+    ``rustc --explain`` [GH-1122]
+  - Add ``:enabled`` property to ``flycheck-define-checker`` [GH-1089]
+
+- Improvements:
+
+  - Do not use ``javascript-eslint`` if eslint cannot find a valid configuration
+    [GH-1085]
+  - Automatically disable syntax checkers which are not installed instead of
+    checking executable before each syntax check [GH-1116]
+  - Add patterns for syntax errors to ``scheme-chicken`` [GH-1123]
+
+29 (Aug 28, 2016)
+=================
 
 - **Breaking changes**
 
   - Change ``flycheck-eslint-rulesdir`` (string) to
     ``flycheck-eslint-rules-directories`` (list of strings) [GH-1016]
+  - Require rust 1.7 or newer for ``rust`` and ``rust-cargo`` [GH-1036]
 
 - New syntax checkers:
 
@@ -22,7 +161,10 @@
 
   - Add default directory for ``haskell-stack-ghc`` and ``haskell-ghc`` checkers
     [GH-1007]
-
+  - ``rust`` and ``rust-cargo`` checkers now support the new error format of
+    rust 1.12 [GH-1016]
+  - ``flycheck-verify-checker`` and ``flycheck-verify-setup`` now include
+    information about configuration files of syntax checkers [GH-1021] [GH-1038]
 
 28 (Jun 05, 2016)
 =================

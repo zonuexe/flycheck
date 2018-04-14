@@ -3,11 +3,10 @@
 
 (package-file "flycheck.el")
 
-(files "flycheck.el" "flycheck-ert.el" "flycheck-buttercup.el"
-       ;; Cask automatically builds docs for us :)
-       "doc/flycheck.texi")
+(files "flycheck.el" "flycheck-ert.el" "flycheck-buttercup.el")
 
 (development
+ (depends-on "f")                       ; For some maintenance tools
  (depends-on "buttercup")               ; BDD test framework for Emacs
  (depends-on "shut-up")                 ; Silence Emacs
 
@@ -15,7 +14,9 @@
  (depends-on "adoc-mode")
  (depends-on "coffee-mode")
  (depends-on "cperl-mode")
+ (depends-on "cwl-mode")
  (depends-on "d-mode")
+ (depends-on "dockerfile-mode")
  (depends-on "erlang")
  (depends-on "ess")
  (depends-on "geiser")
@@ -24,16 +25,19 @@
  (depends-on "haml-mode")
  (depends-on "handlebars-mode")
  (depends-on "haskell-mode")
- (depends-on "jade-mode")
  (depends-on "js2-mode")
  (depends-on "js3-mode")
+ (depends-on "rjsx-mode")
  (depends-on "json-mode")
  (depends-on "less-css-mode")
  (depends-on "lua-mode")
  (depends-on "markdown-mode")
  (depends-on "mmm-mode")
+ (depends-on "nix-mode")
  (depends-on "php-mode")
  (depends-on "processing-mode")
+ (depends-on "protobuf-mode")
+ (depends-on "pug-mode")
  (depends-on "puppet-mode")
  (depends-on "racket-mode")
  (depends-on "rhtml-mode")
@@ -43,6 +47,7 @@
  (depends-on "scala-mode")
  (depends-on "scss-mode")
  (depends-on "slim-mode")
+ (depends-on "systemd")
  (depends-on "typescript-mode")
  (depends-on "web-mode")
  (depends-on "yaml-mode")

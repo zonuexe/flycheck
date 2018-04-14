@@ -1,5 +1,6 @@
-;;; test-emacs-lisp.el --- Flycheck Specs: Haskell      -*- lexical-binding: t; -*-
+;;; test-emacs-lisp.el --- Flycheck Specs: Emacs Lisp      -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2017 Flycheck contributors
 ;; Copyright (C) 2013-2016 Sebastian Wiesner and Flycheck contributors
 
 ;; Author: Clément Pit-Claudel <clement.pitclaudel@live.com>
@@ -48,8 +49,9 @@
               (seq-filter #'flycheck/custom-var-p checkdoc-custom-group))
              (checkdoc-custom-vars (seq-map #'car checkdoc-custom-pairs))
              (checkdoc-relevant-vars
-              (seq-difference checkdoc-custom-vars
-                              flycheck/excluded-checkdoc-vars)))
+              (cons 'sentence-end-double-space
+                    (seq-difference checkdoc-custom-vars
+                                    flycheck/excluded-checkdoc-vars))))
         (expect (seq-sort #'string-lessp flycheck-emacs-lisp-checkdoc-variables)
                 :to-equal
                 (seq-sort #'string-lessp checkdoc-relevant-vars))))))

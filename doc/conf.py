@@ -1,3 +1,4 @@
+# Copyright (C) 2017 Flycheck contributors
 # Copyright (C) 2016 Sebastian Wiesner and Flycheck contributors
 
 # This file is not part of GNU Emacs.
@@ -43,7 +44,7 @@ extensions = [
 
 # Project metadata
 project = 'Flycheck'
-copyright = ' 2014-2016, Sebastian Wiesner and Flycheck contributors'
+copyright = ' 2014-2017, Sebastian Wiesner and Flycheck contributors'
 author = 'Sebastian Wiesner'
 
 
@@ -107,6 +108,8 @@ nitpick_ignore = [
     ('any', 'package-archives'),
     ('any', 'user-init-file'),
     ('any', 'user-emacs-directory'),
+    ('any', 'check-declare-file'),
+    ('any', 'declare-function'),
 ]
 
 # HTML settings
@@ -120,13 +123,11 @@ html_theme_options = {
     'github_type': 'star',
     'github_banner': True,
     'travis_button': False,
-    # Google Analytics ID for our documentation.  On ReadTheDocs it's set via
-    # the Admin interface so we'll skip it here.
-    'analytics_id': 'UA-71100672-2' if not ON_RTD else None,
 }
 html_sidebars = {
     '**': [
         'about.html',
+        'tables.html',
         'navigation.html',
         'relations.html',
         'searchbox.html',
@@ -140,7 +141,7 @@ linkcheck_ignore = [r'http://localhost:\d+/?']
 
 # Cross-reference remote Sphinx sites
 intersphinx_mapping = {
-   'python': ('https://docs.python.org/3.5', None)
+    'python': ('https://docs.python.org/3.5', None)
 }
 
 extlinks = {
@@ -209,10 +210,10 @@ class SyntaxCheckerConfigurationFile(Directive):
         template = ViewList("""\
 .. index:: single: Configuration file; {0}
 
-.. el:option:: {0}
+.. el:defcustom:: {0}
 
    Configuration file for this syntax checker.  See
-   :ref:`flycheck-config-files`.
+   :ref:`flycheck-checker-config-files`.
 """.format(option).splitlines(), docname)
         self.state.nested_parse(template, self.content_offset, wrapper)
 
@@ -268,11 +269,11 @@ class IssueReferences(Transform):
 
 def build_offline_html(app):
     from sphinx.builders.html import StandaloneHTMLBuilder
-    if app.config.flycheck_offline_html and isinstance(app.builder, StandaloneHTMLBuilder):
+    build_standalone = isinstance(app.builder, StandaloneHTMLBuilder)
+    if app.config.flycheck_offline_html and build_standalone:
         app.info('Building offline documentation without external resources!')
         app.builder.theme_options['github_banner'] = 'false'
         app.builder.theme_options['github_button'] = 'false'
-        app.builder.theme_options['analytics_id'] = None
 
 
 def add_offline_to_context(app, _pagename, _templatename, context, _doctree):
@@ -281,7 +282,8 @@ def add_offline_to_context(app, _pagename, _templatename, context, _doctree):
 
 
 def setup(app):
-    app.add_object_type('syntax-checker', 'checker', 'pair: %s; Syntax checker')
+    app.add_object_type('syntax-checker', 'checker',
+                        'pair: %s; Syntax checker')
     app.add_directive('supported-language', SupportedLanguage)
     app.add_directive('syntax-checker-config-file',
                       SyntaxCheckerConfigurationFile)

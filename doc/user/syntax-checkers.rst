@@ -42,10 +42,22 @@ buffer from `flycheck-checkers` whenever it needs to check the buffer:
 
 Flycheck picks the first syntax checker from this list which exists and supports
 the current major mode, and runs it over the current buffer.  When the checker
-has finished Flycheck whether it asks for a next syntax checker to run, and if
-so, runs the next syntax checker, and so on, until there is no more syntax
-checker for the current buffer.  This process repeats whenever Flycheck needs to
-check the buffer according to `flycheck-check-syntax-automatically`.
+has finished, Flycheck looks for the next syntax checker to run, and if there is
+one, Flycheck runs the next syntax checker, and so on, until there is no more
+syntax checker for the current buffer.  This process repeats whenever Flycheck
+needs to check the buffer according to `flycheck-check-syntax-automatically`.
+
+.. important::
+
+   Under some circumstances—for instance if the syntax checker is not installed—
+   Flycheck automatically :ref:`disables syntax checkers
+   <flycheck-disable-checkers>` in the current buffer and will thus not even
+   consider them in any future checks in the current buffer.
+
+   In the `verification buffer <C-c ! v>` these syntax checkers are marked as
+   “disabled” just as if you had disabled them manually with `C-c ! x`, and
+   likewise you can re-enable automatically disabled syntax checkers with `C-u
+   C-c ! x`.
 
 For instance, the first syntax checker for Emacs Lisp is `emacs-lisp` which
 checks Emacs Lisp with Emacs' own byte compiler.  This syntax checker asks for
@@ -161,7 +173,7 @@ Internally this command changes the buffer-local `flycheck-disabled-checkers`:
 
 You can also disable syntax checkers per project with directory local variables.
 For instance type :kbd:`M-x add-dir-local-variable RET emacs-lisp-mode RET
-flycheck-disabled-checkers RET emacs-lisp-checkdoc` in your :term:`user emacs
+flycheck-disabled-checkers RET (emacs-lisp-checkdoc)` in your :term:`user emacs
 directory` to disable `emacs-lisp-checkdoc` for all Emacs Lisp files in your
 personal configuration.
 
@@ -180,3 +192,85 @@ or use `C-u C-c ! x`:
                 C-u M-x flycheck-disable-checker
 
    Prompt for a disabled syntax checker to enable again in the current buffer.
+
+.. _flycheck-checker-options:
+
+Configure syntax checkers
+=========================
+
+Many syntax checkers provide command line flags to change their behaviour.
+Flycheck wraps important flags as regular Emacs user options.
+
+The :ref:`list of supported languages <flycheck-languages>` includes all options
+for each syntax checker.  You can change these options in the Customize
+interface under :menuselection:`programming --> tools --> flycheck -->
+flycheck-options`, however we recommend to use Directory Variables to configure
+syntax checkers per project.
+
+.. seealso::
+
+   :infonode:`(emacs)Directory Variables`
+      Information about directory variables.
+
+.. _flycheck-checker-config-files:
+
+Configuration files
+-------------------
+
+Some syntax checkers can additionally read configuration from files.  Flycheck
+can find configuration files of syntax checkers and use them when invoking the
+syntax checker program:
+
+.. defcustom:: flycheck-local-config-file-functions
+
+   Functions to call to find a configuration file for a syntax checker.  Each
+   function gets the name of a configuration file and shall return the absolute
+   path to a file if one exists.  The default value leads to the following
+   steps:
+
+   1. If the name is an absolute path, use it.
+   2. If the name exists in any ancestor directory, use the nearest one.
+   3. If the name exists in ``$HOME``, use it.
+
+   This option is an abnormal hook, see :infonode:`(elisp)Hooks`.
+
+Flycheck takes the names of configuration files from user options defined for
+syntax checkers that support configuration files.  Like above the :ref:`list of
+languages <flycheck-languages>` also lists all supported configuration file
+options.  You can also change these in Customize, under
+:menuselection:`programming --> tools --> flycheck --> flycheck-config-files`,
+but again we recommend to use Directory Variables.
+
+We also recommend to prefer configuration files over options as you can usually
+commit the configuration files to your source control repository to share them
+with other contributors so that all contributors can use the same configuration
+for syntax checking and linting.
+
+.. _flycheck-checker-executables:
+
+Change syntax checker executables
+=================================
+
+Flycheck normally tries to run syntax checker tools by their standard name from
+`exec-path`.  Sometimes, though, you need to use a different version of a tool,
+or probably don't even have a tool available globally—this frequently occurs in
+Javascript project where dependencies including linter tools are typically
+installed into a local ``node_modules`` directory:
+
+.. define-key:: M-x flycheck-set-checker-executable
+
+   Prompt for a syntax checker and an executable file and make Flycheck use the
+   executable file for the syntax checker in the current buffer.
+
+   Internally this command sets a variable named
+   :samp:`flycheck-{checker}-executable` where :samp:`{checker}` is the name of
+   the syntax checker entered on the prompt, e.g. `c/c++-clang`.
+
+   Flycheck defines these :term:`executable options` for every syntax checker
+   that runs an external command.  You can change these variables with directory
+   variables or set them in custom Emacs Lisp code such as mode hooks.
+
+   .. seealso::
+
+      :infonode:`(emacs)Directory Variables`
+         Information about directory variables.

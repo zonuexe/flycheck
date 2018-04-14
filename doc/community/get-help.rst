@@ -1,9 +1,8 @@
+.. _flycheck-get-help:
+
 ==========
  Get help
 ==========
-
-Follow `@emacs_flycheck`_ on Twitter for updates.  Feel free to mention the
-account for questions.
 
 Please ask questions about Flycheck on `Stack Exchange`_ or in our `Gitter
 chat`_.  We try to answer all questions as fast and as precise as possible.
@@ -16,4 +15,3 @@ Please follow our :ref:`Code of Conduct <flycheck-conduct>` in all these places.
 
 .. _Stack Exchange: https://emacs.stackexchange.com/questions/tagged/flycheck
 .. _Gitter chat: https://gitter.im/flycheck/flycheck
-.. _@emacs_flycheck: https://twitter.com/emacs_flycheck

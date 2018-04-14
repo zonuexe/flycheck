@@ -1,3 +1,5 @@
+.. _flycheck-contributors-guide:
+
 =====================
  Contributor’s Guide
 =====================
@@ -18,7 +20,7 @@ Conduct <flycheck-conduct>`.
 
 .. _issue tracker: https://github.com/flycheck/flycheck/issues
 .. _Gitter chatroom: https://gitter.im/flycheck/flycheck
-.. _need your help with: https://github.com/flycheck/flycheck/issues?q=is%3Aopen+is%3Aissue+no%3Aassignee
+.. _need your help with: https://github.com/flycheck/flycheck/issues?q=is%3Aissue+is%3Aopen+label%3A%22needs+help%22
 .. _beginner-friendly tasks: https://github.com/flycheck/flycheck/labels/beginner%20friendly
 
 .. _flycheck-bug-reports:
@@ -43,13 +45,10 @@ than too little. Here’s a list of facts that are important:
 * What you did, and what you expected to happen instead
 * Whether and how you were able to `reproduce the issue in emacs -Q`_
 * Your Flycheck setup from ``M-x flycheck-verify-setup``
-* Your operating system
-* Your Emacs version from ``M-x emacs-version``
-* Your Flycheck version from ``M-x flycheck-version``
 
 .. _search existing issues: https://github.com/flycheck/flycheck/issues?q=is%3Aissue
 .. _issue form: https://github.com/flycheck/flycheck/issues/new
-.. _reproduce the issue in emacs -Q: http://www.lunaryorn.com/2015/11/29/reproduce-bugs-in-emacs-Q.html
+.. _reproduce the issue in emacs -Q: http://www.lunaryorn.com/posts/reproduce-bugs-in-emacs-Q.html
 
 .. _flycheck-windows-issues:
 
@@ -84,11 +83,13 @@ Run ``make help`` to see a list of all available targets.  Some common ones are:
 
 - ``make init`` initialises the project by installing local Emacs Lisp
   dependencies.
+- ``make check`` checks all Emacs Lisp sources.  This target requires Emacs 25.
 - ``make compile`` compiles Flycheck and its libraries to byte code.
+- ``make format`` formats all Emacs Lisp sources.
 - ``make specs`` runs all Buttercup_ specs for Flycheck.  Set :makevar:`PATTERN`
   to run only specs matching a specific regular expression, e.g. ``make
   PATTERN='^Mode Line' specs`` to run only tests for the mode line.
-- ``make test`` runs all ERT unit tests for Flycheck.  We are phasing ERT out in
+- ``make unit`` runs all ERT unit tests for Flycheck.  We are phasing ERT out in
   favour of Buttercup; no new ERT unit tests will be added and this target will
   eventually be removed.
 - ``make integ`` runs all integration tests for Flycheck syntax checkers.  These
@@ -111,8 +112,8 @@ Flycheck. Github provides great documentation about `Pull Requests`_.
 
 Please make your pull requests against the ``master`` branch.
 
-Use ``make specs test`` to test your pull request locally. When making changes
-to syntax checkers of a specific language, it’s also a good idea to run
+Use ``make check specs unit`` to test your pull request locally. When making
+changes to syntax checkers of a specific language, it’s also a good idea to run
 :samp:`make LANGUAGE={language} integ` and check whether the tests for the
 particular language still work.  A successful ``make integ`` is by no means
 mandatory for pull requests, though, we will test your changes, too.
@@ -121,7 +122,7 @@ mandatory for pull requests, though, we will test your changes, too.
 
    To contribute to Flycheck you must sign our CLA_ (Contributor License
    Agreement).  The CLA Assistant bot will automatically ask you to do this when
-   you open a pull request, and let's you sign the CLA through your Github
+   you open a pull request, and will let you sign the CLA through your Github
    account.
 
    We require this process mostly to make you aware of the licensing
@@ -130,47 +131,41 @@ mandatory for pull requests, though, we will test your changes, too.
 
    .. _CLA: https://gist.github.com/lunaryorn/c9c0d656fe7e704da2f734779242ec99
 
-All pull requests are reviewed by a :ref:`maintainer <flycheck-maintainers>`.
-Feel free to mention individual developers (e.g. ``@lunaryorn``) to request a
-review from a specific person, or ``@flycheck/maintainers`` if you have general
-questions or if your pull request was waiting for review too long.
+All pull requests go through a two-stage review process:
+
+* :ref:`Maintainer <flycheck-maintainers>` review the general idea and direction
+  of the pull request and leave a ``LGTM`` comment if they believe that the
+  change is a good addition to Flycheck.  We currently require at least one
+  approval from a maintainer.
+* :ref:`All contributors <flycheck-language-teams>`—language teams in
+  particular—check the technical implementation of a pull request through `pull
+  request reviews`_, and either approve it or request changes.  We currently
+  require at least one approval and no requested changes.
+
+.. important::
+
+   We have a comprehensive :ref:`flycheck-style-guide` that explains what
+   features we will accept, how our code should look likewise, what tests we
+   require, how commit messages should look like, and so on.
+
+   Take a look at it to see what we look for in a code review.
 
 Additionally all pull requests go through automated tests on `Travis CI`_ which
-check code style, run unit tests, etc.
+check code style, run unit tests, etc
 
-After the pull request was reviewed and if all tests passed maintainers will
-leave a ``LGTM`` comment at which point the pull request is ready for being
-merged.
+Feel free to mention individual contributors or entire teams
+(e.g. ``@flycheck/maintainers`` or ``@flycheck/javascript``) to ask for help or
+feedback or request a review.  Please mention the maintainers
+(``@flycheck/maintainers``) if you think that your pull request has been waiting
+for review too long.  You can expect a first response to any pull request in a
+couple of days.
 
+Once the pull request passed review and automated tests we will merge it.  We
+may also ask you whether you'd like to join Flycheck and help us, thus giving
+you commit access to our repository and let you merge your own pull request.
+
+.. _pull request reviews: https://help.github.com/articles/about-pull-request-reviews/
 .. _Travis CI: https://travis-ci.org/flycheck/flycheck/pull_requests
-
-Commit guidelines
------------------
-
-The art of writing good commit messages is a wide subject. This model commit
-message illustrates our style::
-
-   Fix a foo bug
-
-   The first line is the summary, 50 characters or less.  Write in the
-   imperative and in present tense: “Fix bug”, not “fixed bug” or “fixes
-   bug”.
-
-   After the summary more paragraphs with detailed explanations may follow,
-   wrapped at 72 characters.  Separate multiple paragraphs by blank lines.
-
-   You may use simple formatting like *emphasis* or _underline_, but keep
-   it to a minimum.  Commit messages are not in Markdown :)
-
-   Commit messages may reference issues by number, like this: See GH-42.
-   Please use `GH-` to prefix issue numbers.  You may also close issues
-   like this: Fixes GH-42 and closes GH-42.
-
-`Git Commit`_ and Magit_ provide Emacs mode for Git commit messages, which helps
-you to comply to these guidelines.
-
-.. _Git Commit: https://github.com/magit/magit/
-.. _Magit: https://github.com/magit/magit/
 
 Writing documentation
 =====================
@@ -180,7 +175,7 @@ reStructuredText_ and built with Sphinx_.  The source of the manual resides in
 the ``doc/`` directory.
 
 You need Python 3.4 or newer to install Sphinx_ for Flycheck’s documentation.
-On OS X it is recommended that you use Homebrew_ to install the latest Python
+On macOS it is recommended that you use Homebrew_ to install the latest Python
 version with ``brew install python3``.  On Linux you should be able to obtain
 Python 3.4 from the package manager of your distribution.
 
@@ -192,8 +187,8 @@ modules.  ``make init`` will warn you if you do not.
 When editing documentation run ``make html-auto`` to view the results of your
 edits.  This target runs a local webserver at http://localhost:8000 which serves
 the HTML documentation and watches the documentation sources for changes to
-rebuild automatically.  When you finished your edits it is a good idea to run
-``make linkcheck`` to verify all links in the documentation.  Note that this
+rebuild automatically.  When you have finished your edits it is a good idea to
+run ``make linkcheck`` to verify all links in the documentation.  Note that this
 target can take a while especially when run on a clean build.
 
 Run ``make help`` to see a list of all available Make targets for the
@@ -204,7 +199,7 @@ find documentation issues sort by the `documentation`_ label.
 
 .. _ReStructuredText: http://docutils.sourceforge.net/rst.html
 .. _Sphinx: http://www.sphinx-doc.org
-.. _Homebrew: http://brew.sh
+.. _Homebrew: https://brew.sh
 .. _virtualenv: https://virtualenv.pypa.io/en/latest/
 .. _documentation: https://github.com/flycheck/flycheck/labels/documentation
 

@@ -30,25 +30,31 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _GNAT: http://libre.adacore.com/tools/gnat-gpl-edition
 
-      .. option:: flycheck-gnat-args
+      .. defcustom:: flycheck-gnat-args
 
          A list of additional options.
 
-      .. option:: flycheck-gnat-include-path
+      .. defcustom:: flycheck-gnat-include-path
 
          A list of include directories.  Relative paths are relative to the path
          of the buffer being checked.
 
-      .. option:: flycheck-gnat-language-standard
+      .. defcustom:: flycheck-gnat-language-standard
 
          The language standard to use as string.
 
-      .. option:: flycheck-gnat-warnings
+      .. defcustom:: flycheck-gnat-warnings
 
          A list of additional warnings to enable.  Each item is the name of a
          warning category to enable.
 
 .. supported-language:: AsciiDoc
+
+   .. syntax-checker:: asciidoctor
+
+      Check AsciiDoc with the default Asciidoctor_ backend.
+
+      .. _Asciidoctor: http://asciidoctor.org
 
    .. syntax-checker:: asciidoc
 
@@ -70,83 +76,83 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. note::
 
-         `c/c++-gcc` requires GCC 4.8 or newer.
+         `c/c++-gcc` requires GCC 4.4 or newer.
 
       .. _Clang: http://clang.llvm.org/
       .. _GCC: https://gcc.gnu.org/
 
-      .. option:: flycheck-clang-args
-                  flycheck-gcc-args
+      .. defcustom:: flycheck-clang-args
+                     flycheck-gcc-args
 
          A list of additional arguments for `c/c++-clang` and `c/c++-gcc`
          respectively.
 
-      .. option:: flycheck-clang-blocks
+      .. defcustom:: flycheck-clang-blocks
 
          Whether to enable blocks in `c/c++-clang`.
 
-      .. option:: flycheck-clang-definitions
-                  flycheck-gcc-definitions
+      .. defcustom:: flycheck-clang-definitions
+                     flycheck-gcc-definitions
 
          A list of additional preprocessor definitions for `c/c++-clang` and
          `c/c++-gcc` respectively.
 
-      .. option:: flycheck-clang-include-path
-                  flycheck-gcc-include-path
+      .. defcustom:: flycheck-clang-include-path
+                     flycheck-gcc-include-path
 
          A list of include directories for `c/c++-clang` and `c/c++-gcc`
          respectively, relative to the file being checked.
 
-      .. option:: flycheck-clang-includes
-                  flycheck-gcc-includes
+      .. defcustom:: flycheck-clang-includes
+                     flycheck-gcc-includes
 
          A list of additional include files for `c/c++-clang` and `c/c++-gcc`
          respectively, relative to the file being checked.
 
-      .. option:: flycheck-clang-language-standard
-                  flycheck-gcc-language-standard
+      .. defcustom:: flycheck-clang-language-standard
+                     flycheck-gcc-language-standard
 
          The language standard to use in `c/c++-clang` and `c/c++-gcc`
          respectively as string, via the ``-std`` option.
 
-      .. option:: flycheck-clang-ms-extensions
+      .. defcustom:: flycheck-clang-ms-extensions
 
          Whether to enable Microsoft extensions to C/C++ in `c/c++-clang`.
 
-      .. option:: flycheck-clang-no-exceptions
-                  flycheck-gcc-no-exceptions
+      .. defcustom:: flycheck-clang-no-exceptions
+                     flycheck-gcc-no-exceptions
 
          Whether to disable exceptions in `c/c++-clang` and
          `c/c++-gcc` respectively.
 
-      .. option:: flycheck-clang-no-rtti
-                  flycheck-gcc-no-rtti
+      .. defcustom:: flycheck-clang-no-rtti
+                     flycheck-gcc-no-rtti
 
          Whether to disable RTTI in `c/c++-clang` and `c/c++-gcc` respectively,
          via ``-fno-rtti``.
 
-      .. option:: flycheck-clang-standard-library
+      .. defcustom:: flycheck-clang-standard-library
 
          The name of the standard library to use for `c/c++-clang`, as string.
 
-      .. option:: flycheck-gcc-openmp
+      .. defcustom:: flycheck-gcc-openmp
 
          Whether to enable OpenMP in `c/c++-gcc`.
 
-      .. option:: flycheck-clang-pedantic
-                  flycheck-gcc-pedantic
+      .. defcustom:: flycheck-clang-pedantic
+                     flycheck-gcc-pedantic
 
          Whether to warn about language extensions in `c/c++-clang` and
          `c/c++-gcc` respectively.
 
-      .. option:: flycheck-clang-pedantic-errors
-                  flycheck-gcc-pedantic-errors
+      .. defcustom:: flycheck-clang-pedantic-errors
+                     flycheck-gcc-pedantic-errors
 
          Whether to error on language extensions in `c/c++-clang` and
          `c/c++-gcc` respectively.
 
-      .. option:: flycheck-clang-warnings
-                  flycheck-gcc-warnings
+      .. defcustom:: flycheck-clang-warnings
+                     flycheck-gcc-warnings
 
          A list of additional warnings to enable in `c/c++-clang` and
          `c/c++-gcc` respectively.  Each item is the name of a warning or
@@ -158,12 +164,12 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _cppcheck: http://cppcheck.sourceforge.net/
 
-      .. option:: flycheck-cppcheck-checks
+      .. defcustom:: flycheck-cppcheck-checks
 
          A list of enabled checks.  Each item is the name of a check for the
          ``--enable`` option.
 
-      .. option:: flycheck-cppcheck-inconclusive
+      .. defcustom:: flycheck-cppcheck-inconclusive
 
          Whether to enable inconclusive checks.  These checks may yield more
          false positives than normal checks.
@@ -172,26 +178,31 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
             This option requires cppcheck 1.54 or newer.
 
-      .. option:: flycheck-cppcheck-include-path
+      .. defcustom:: flycheck-cppcheck-include-path
 
          A list of include directories.  Relative paths are relative to the file
          being checked.
 
-      .. option:: flycheck-cppcheck-standards
+      .. defcustom:: flycheck-cppcheck-standards
 
          The C, C++ and/or POSIX standards to use via one or more ``--std=``
          arguments.
 
-      .. option:: flycheck-cppcheck-suppressions
+      .. defcustom:: flycheck-cppcheck-suppressions
 
          The cppcheck suppressions list to use via one or more ``--suppress=``
          arguments.
+
+      .. defcustom:: flycheck-cppcheck-suppressions-file
+
+         The cppcheck suppressions file to use via the
+         ``--suppressions-list=`` argument.
 
 .. supported-language:: CFEngine
 
    .. syntax-checker:: cfengine
 
-      Check syntax with `CFEngine <http://cfengine.com/>`_.
+      Check syntax with `CFEngine <https://cfengine.com/>`_.
 
 .. supported-language:: Chef
 
@@ -199,7 +210,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check style in Chef recipes with `foodcritic <http://www.foodcritic.io>`_.
 
-      .. option:: flycheck-foodcritic-tags
+      .. defcustom:: flycheck-foodcritic-tags
 
          A list of tags to select.
 
@@ -232,6 +243,28 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _CSSLint: https://github.com/CSSLint/csslint
 
+   .. syntax-checker:: css-stylelint
+
+      Syntax-check and lint CSS with stylelint_.
+
+      .. _stylelint: https://stylelint.io
+
+      .. syntax-checker-config-file:: flycheck-stylelintrc
+
+      .. defcustom:: flycheck-stylelint-quiet
+
+         Whether to run stylelint in quiet mode via ``--quiet``.
+
+.. supported-language:: CWL
+
+   .. syntax-checker:: cwl
+
+      Syntax check with (`Schema Salad <http://www.commonwl.org/v1.0/SchemaSalad.html>`_).
+
+      .. defcustom:: flycheck-cwl-schema-path
+
+         A path for the schema file for Common Workflow Language.
+
 .. supported-language:: D
 
    .. syntax-checker:: d-dmd
@@ -242,11 +275,11 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
          This syntax checker requires DMD 2.066 or newer.
 
-      .. option:: flycheck-dmd-include-path
+      .. defcustom:: flycheck-dmd-include-path
 
          A list of include directories.
 
-      .. option:: flycheck-dmd-args
+      .. defcustom:: flycheck-dmd-args
 
          A list of additional arguments.
 
@@ -255,6 +288,14 @@ to view the docstring of the syntax checker.  Likewise, you may use
       :flyc:`flycheck-d-unittest`
          Flycheck extension which provides a syntax checker to run D unittests
          on the fly and report the results with Flycheck.
+
+.. supported-language:: Dockerfile
+
+   .. syntax-checker:: dockerfile-hadolint
+
+      Check syntax and code style with hadolint_
+
+      .. _hadolint: http://hadolint.lukasmartinelli.ch/
 
 .. supported-language:: Emacs Lisp
 
@@ -265,22 +306,27 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check syntax with the built-in byte compiler.
 
-      .. option:: flycheck-emacs-lisp-load-path
+      .. defcustom:: flycheck-emacs-lisp-load-path
 
          The load path as list of strings.  Relative directories are expanded
          against the `default-directory` of the buffer being checked.
 
-      .. option:: flycheck-emacs-lisp-initialize-packages
+      .. defcustom:: flycheck-emacs-lisp-initialize-packages
 
          Whether to initialize Emacs' package manager with `package-initialize`
          before checking the buffer.  If set to :elisp:`auto` (the default),
          only initialize the package managers when checking files under
          `user-emacs-directory`.
 
-      .. option:: flycheck-emacs-lisp-package-user-dir
+      .. defcustom:: flycheck-emacs-lisp-package-user-dir
 
          The package directory as string.  Has no effect if
          `flycheck-emacs-lisp-initialize-packages` is nil.
+
+      .. defcustom:: flycheck-emacs-lisp-check-declare
+
+         If non-nil, also check `declare-function` forms using
+         `check-declare-file`.
 
    .. syntax-checker:: emacs-lisp-checkdoc
 
@@ -300,18 +346,25 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
 .. supported-language:: Erlang
 
+   Flycheck checks Erlang with `erlang-rebar3` in rebar projects and
+   `erlang` otherwise.
+
    .. syntax-checker:: erlang
 
       Check Erlang with the standard `Erlang <http://www.erlang.org/>`_
       compiler.
 
-      .. option:: flycheck-erlang-include-path
+      .. defcustom:: flycheck-erlang-include-path
 
          A list of include directories.
 
-      .. option:: flycheck-erlang-library-path
+      .. defcustom:: flycheck-erlang-library-path
 
          A list of library directories.
+
+   .. syntax-checker:: erlang-rebar3
+
+      Check Erlang with the `rebar3 <https://www.rebar3.org/>`_ build tool.
 
 .. supported-language:: ERuby
 
@@ -327,26 +380,26 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _GFortran: https://gcc.gnu.org/onlinedocs/gfortran/
 
-      .. option:: flycheck-gfortran-args
+      .. defcustom:: flycheck-gfortran-args
 
          A list of additional arguments.
 
-      .. option:: flycheck-gfortran-include-path
+      .. defcustom:: flycheck-gfortran-include-path
 
          A list of include directories.  Relative paths are relative to the file
          being checked.
 
-      .. option:: flycheck-gfortran-language-standard
+      .. defcustom:: flycheck-gfortran-language-standard
 
          The language standard to use via the ``-std`` option.
 
-      .. option:: flycheck-gfortran-layout
+      .. defcustom:: flycheck-gfortran-layout
 
          The source code layout to use.  Set to :elisp:`free` or :elisp:`fixed`
          for free or fixed layout respectively, or nil (the default) to let
          GFortran automatically determine the layout.
 
-      .. option:: flycheck-gfortran-warnings
+      .. defcustom:: flycheck-gfortran-warnings
 
          A list of warnings enabled via the ``-W`` option.
 
@@ -360,6 +413,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
    4. `go-build` or `go-test`
    5. `go-errcheck`
    6. `go-unconvert`
+   7. `go-megacheck`
 
    .. syntax-checker:: go-gofmt
 
@@ -373,13 +427,17 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check Go for suspicious code with vet_.
 
-      .. option:: flycheck-go-vet-print-functions
+      .. defcustom:: flycheck-go-vet-print-functions
 
          A list of print-like functions to check calls for format string problems.
 
-      .. option:: flycheck-go-vet-shadow
+      .. defcustom:: flycheck-go-vet-shadow
 
          Whether to check for shadowed variables, in Go 1.6 or newer.
+
+      .. defcustom:: flycheck-go-build-tags
+
+         A list of build tags.
 
       .. _vet: https://golang.org/cmd/vet/
 
@@ -387,25 +445,39 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check syntax and type with the `Go compiler`_.
 
+      .. note::
+
+         This syntax checker requires Go 1.6 or newer.
+
       .. _Go compiler: https://golang.org/cmd/go
 
-      .. option:: flycheck-go-build-install-deps
+      .. defcustom:: flycheck-go-build-install-deps
 
          Whether to install dependencies while checking with `go-build` or
          `go-test`
 
-      .. option:: flycheck-go-build-tags
+      .. defcustom:: flycheck-go-build-tags
+         :noindex:
 
-         A list of build tags.
+         See `flycheck-go-build-tags`
 
    .. syntax-checker:: go-test
 
       Check syntax and types of Go tests with the `Go compiler`_.
 
-      .. option:: flycheck-go-build-install-deps
+      .. note::
+
+         This syntax checker requires Go 1.6 or newer.
+
+      .. defcustom:: flycheck-go-build-install-deps
          :noindex:
 
          See `flycheck-go-build-install-deps`.
+
+      .. defcustom:: flycheck-go-build-tags
+         :noindex:
+
+         See `flycheck-go-build-tags`
 
    .. syntax-checker:: go-errcheck
 
@@ -418,11 +490,26 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _errcheck: https://github.com/kisielk/errcheck
 
+      .. defcustom:: flycheck-go-build-tags
+         :noindex:
+
+         See `flycheck-go-build-tags`
+
    .. syntax-checker:: go-unconvert
 
       Check for unnecessary type conversions with unconvert_.
 
       .. _unconvert: https://github.com/mdempsky/unconvert
+
+   .. syntax-checker:: go-megacheck
+
+      Lint code with megacheck_.
+
+      .. defcustom:: flycheck-go-megacheck-disabled-checkers
+
+         A list of checkers to disable when running megacheck_.
+
+      .. _megacheck: https://github.com/dominikh/go-tools
 
 .. supported-language:: Groovy
 
@@ -466,29 +553,34 @@ to view the docstring of the syntax checker.  Likewise, you may use
       .. _GHC: https://www.haskell.org/ghc/
       .. _Stack: https://github.com/commercialhaskell/stack
 
-      .. option:: flycheck-ghc-args
+      .. defcustom:: flycheck-ghc-args
 
          A list of additional arguments.
 
-      .. option:: flycheck-ghc-no-user-package-database
+      .. defcustom:: flycheck-ghc-no-user-package-database
 
          Whether to disable the user package database (only for `haskell-ghc`).
 
-      .. option:: flycheck-ghc-stack-use-nix
+      .. defcustom:: flycheck-ghc-stack-use-nix
 
          Whether to enable Nix support for Stack (only for `haskell-stack-ghc`).
 
-      .. option:: flycheck-ghc-package-databases
+      .. defcustom:: flycheck-ghc-stack-project-file
+
+         Allows to override the default ``stack.yaml`` file for Stack,
+         via ``--stack-yaml`` (only for `haskell-stack-ghc`).
+
+      .. defcustom:: flycheck-ghc-package-databases
 
          A list of additional package databases for GHC (only for
          `haskell-ghc`).  Each item points to a directory containing a package
          directory, via ``-package-db``.
 
-      .. option:: flycheck-ghc-search-path
+      .. defcustom:: flycheck-ghc-search-path
 
          A list of module directories, via ``-i``.
 
-      .. option:: flycheck-ghc-language-extensions
+      .. defcustom:: flycheck-ghc-language-extensions
 
          A list of language extensions, via ``-X``.
 
@@ -496,19 +588,19 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Lint with `hlint <https://github.com/ndmitchell/hlint>`_.
 
-      .. option:: flycheck-hlint-args
+      .. defcustom:: flycheck-hlint-args
 
          A list of additional arguments.
 
-      .. option:: flycheck-hlint-language-extensions
+      .. defcustom:: flycheck-hlint-language-extensions
 
          A list of language extensions to enable.
 
-      .. option:: flycheck-hlint-ignore-rules
+      .. defcustom:: flycheck-hlint-ignore-rules
 
          A list of rules to ignore.
 
-      .. option:: flycheck-hlint-hint-packages
+      .. defcustom:: flycheck-hlint-hint-packages
 
          A list of additional hint packages to include.
 
@@ -524,16 +616,10 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. syntax-checker-config-file:: flycheck-tidyrc
 
-.. supported-language:: Jade
-
-   .. syntax-checker:: jade
-
-      Check syntax using the `Jade <http://jade-lang.com/>`_ compiler.
-
 .. supported-language:: Javascript
 
-   Flycheck checks Javascript with one of `javascript-eslint`,
-   `javascript-jshint` or `javascript-gjslint`, and then with `javascript-jscs`.
+   Flycheck checks Javascript with one of `javascript-eslint` or
+   `javascript-jshint`.
 
    Alternatively `javascript-standard` is used instead all of the former ones.
 
@@ -541,35 +627,25 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check syntax and lint with `ESLint <http://eslint.org/>`_.
 
-      .. option:: flycheck-eslint-rules-directories
+      .. note::
+
+         Flycheck automatically :ref:`disables <flycheck-disable-checkers>`
+         this syntax checker if eslint cannot find a valid configuration file
+         for the current buffer.
+
+      .. defcustom:: flycheck-eslint-rules-directories
 
          A list of directories with custom rules.
-
-      .. syntax-checker-config-file:: flycheck-eslintrc
 
    .. syntax-checker:: javascript-jshint
 
       Check syntax and lint with `JSHint <http://jshint.com/>`_.
 
-      .. option:: flycheck-jshint-extract-javascript
+      .. defcustom:: flycheck-jshint-extract-javascript
 
          Whether to extract Javascript from HTML before linting.
 
       .. syntax-checker-config-file:: flycheck-jshintrc
-
-   .. syntax-checker:: javascript-gjslint
-
-      Lint with `Closure Linter`_.
-
-      .. _Closure Linter: https://developers.google.com/closure/utilities
-
-      .. syntax-checker-config-file:: flycheck-gjslintrc
-
-   .. syntax-checker:: javascript-jscs
-
-      Check code style with `JSCS <http://jscs.info/>`_.
-
-      .. syntax-checker-config-file:: flycheck-jscsrc
 
    .. syntax-checker:: javascript-standard
 
@@ -590,6 +666,12 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check JSON with Python's built-in :py:mod:`json` module.
 
+.. supported-language:: Jsonnet
+
+   .. syntax-checker:: jsonnet
+
+      Checks `Jsonnet <http://jsonnet.org>`_ with `jsonnet`.
+
 .. supported-language:: Less
 
    .. syntax-checker:: less
@@ -600,6 +682,24 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
          This syntax checker requires lessc 1.4 or newer.
 
+   .. syntax-checker:: less-stylelint
+
+      Syntax-check and lint Less with stylelint_.
+
+      .. _stylelint: https://stylelint.io
+
+      .. syntax-checker-config-file:: flycheck-stylelintrc
+
+      .. defcustom:: flycheck-stylelint-quiet
+
+         Whether to run stylelint in quiet mode via ``--quiet``.
+
+.. supported-language:: LLVM
+
+   .. syntax-checker:: llvm-llc
+
+      Check syntax with `llc <http://llvm.org/docs/CommandGuide/llc.html>`_.
+
 .. supported-language:: Lua
 
    Flycheck checks Lua with `lua-luacheck`, falling back to `lua`.
@@ -608,9 +708,13 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check syntax and lint with Luacheck_.
 
-      .. _Luacheck: https://github.com/mpeterv/luacheck
-
       .. syntax-checker-config-file:: flycheck-luacheckrc
+
+      .. defcustom:: flycheck-luacheck-standards
+
+         The luacheck standards to use via one or more ``--std`` arguments.
+
+      .. _Luacheck: https://github.com/mpeterv/luacheck
 
    .. syntax-checker:: lua
 
@@ -618,19 +722,34 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
 .. supported-language:: Markdown
 
+   .. syntax-checker:: markdown-markdownlint-cli
+
+      Check Markdown with `markdownlint-cli
+      <https://github.com/igorshubovych/markdownlint-cli>`_.
+
+      .. syntax-checker-config-file:: flycheck-markdown-markdownlint-cli-config
+
    .. syntax-checker:: markdown-mdl
 
       Check Markdown with `markdownlint <https://github.com/mivok/markdownlint/>`_.
 
-      .. option:: flycheck-markdown-mdl-rules
+      .. defcustom:: flycheck-markdown-mdl-rules
 
          A list of enabled rules.
 
-      .. option:: flycheck-markdown-mdl-tags
+      .. defcustom:: flycheck-markdown-mdl-tags
 
          A list of enabled rule tags.
 
       .. syntax-checker-config-file:: flycheck-markdown-mdl-style
+
+.. supported-language:: Nix
+
+   .. syntax-checker:: nix
+
+      Check Nix with nix-instantiate_.
+
+      .. _nix-instantiate: https://nixos.org/nix/manual/#sec-nix-instantiate
 
 .. supported-language:: Perl
 
@@ -640,9 +759,13 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check syntax with the `Perl <https://www.perl.org/>`_ interpreter.
 
-      .. option:: flycheck-perl-include-path
+      .. defcustom:: flycheck-perl-include-path
 
          A list of include directories, relative to the file being checked.
+
+      .. defcustom:: flycheck-perl-module-list
+
+         A list of module names to implicitly use.
 
    .. syntax-checker:: perl-perlcritic
 
@@ -650,7 +773,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _Perl::Critic: https://metacpan.org/pod/Perl::Critic
 
-      .. option:: flycheck-perlcritic-severity
+      .. defcustom:: flycheck-perlcritic-severity
 
          The severity level as integer for the ``--severity``.
 
@@ -670,7 +793,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Lint with `PHP Mess Detector <https://phpmd.org/>`_.
 
-      .. option:: flycheck-phpmd-rulesets
+      .. defcustom:: flycheck-phpmd-rulesets
 
          A list of rule sets.  Each item is either the name of a default rule
          set, or the path to a custom rule set file.
@@ -685,7 +808,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _PHP Code Sniffer: http://pear.php.net/package/PHP_CodeSniffer
 
-      .. option:: flycheck-phpcs-standard
+      .. defcustom:: flycheck-phpcs-standard
 
          The coding standard, either as name of a built-in standard, or as path
          to a standard specification.
@@ -695,6 +818,20 @@ to view the docstring of the syntax checker.  Likewise, you may use
    .. syntax-checker:: processing
 
       Check syntax using the `Processing <https://processing.org/>`_ compiler.
+
+.. supported-language:: Protobuf
+
+   .. syntax-checker:: protobuf-protoc
+
+      Check syntax using the protoc_ compiler.
+
+      .. _protoc: https://developers.google.com/protocol-buffers/
+
+.. supported-language:: Pug
+
+   .. syntax-checker:: pug
+
+      Check syntax using the `Pug <https://www.pugjs.org>`_ compiler.
 
 .. supported-language:: Puppet
 
@@ -708,7 +845,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Link with `Puppet Lint <http://puppet-lint.com/>`_.
 
-      .. option:: flycheck-puppet-lint-disabled-checks
+      .. defcustom:: flycheck-puppet-lint-disabled-checks
 
          A list of checks to disable.
 
@@ -719,11 +856,23 @@ to view the docstring of the syntax checker.  Likewise, you may use
    Flycheck checks Python with `python-flake8` or `python-pylint`, and falls
    back to `python-pycompile` if neither of those is available.
 
+   All Python checkers are invoked indirectly using ``python -c ...`` (rather
+   than a direct call to ``flake8`` or ``pylint``) to make it easier to switch
+   between Python 2 and 3.  For example, you can use ``(setq-local
+   flycheck-python-pylint-executable "python3")`` to run ``pylint`` using Python
+   3, or ``(defvaralias 'flycheck-python-flake8-executable
+   'python-shell-interpreter)`` to run ``flake8`` through the executable pointed
+   to by ``python-shell-interpreter``.
+
    .. seealso::
 
       :gh:`flycheck-pyflakes <Wilfred/flycheck-pyflakes>`
          Flycheck extension which adds a syntax checker using `Pyflakes
-         <https://github.com/pyflakes/pyflakes>`_.
+         <https://github.com/PyCQA/pyflakes>`_.
+
+      :gh:`msherry/flycheck-pycheckers`
+         Flycheck extension which can use multiple checkers simultaneously --
+         including pyflakes, pep8, flake8, pylint, and mypy 2/3.
 
    .. syntax-checker:: python-flake8
 
@@ -731,17 +880,17 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. note::
 
-         This syntax checker requires flake8 2.0 or newer.
+         This syntax checker requires flake8 3.0 or newer.
 
-      .. option:: flycheck-flake8-error-level-alist
+      .. defcustom:: flycheck-flake8-error-level-alist
 
          An alist mapping Flake8 error IDs to Flycheck error levels.
 
-      .. option:: flycheck-flake8-maximum-complexity
+      .. defcustom:: flycheck-flake8-maximum-complexity
 
          The maximum McCabe complexity allowed for methods.
 
-      .. option:: flycheck-flake8-maximum-line-length
+      .. defcustom:: flycheck-flake8-maximum-line-length
 
          The maximum length of lines.
 
@@ -755,7 +904,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
          This syntax checker requires Pylint 1.0 or newer.
 
-      .. option:: flycheck-pylint-use-symbolic-id
+      .. defcustom:: flycheck-pylint-use-symbolic-id
 
          Whether to report symbolic (e.g. ``no-name-in-module``) or numeric
          (e.g. ``E0611``) message identifiers.
@@ -772,12 +921,12 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       Check syntax and lint with `lintr <https://github.com/jimhester/lintr>`_.
 
-      .. option:: flycheck-lintr-caching
+      .. defcustom:: flycheck-lintr-caching
 
          Whether to enable caching in lintr.  On by default; it is not
          recommended to disable caching unless it causes actual problems.
 
-      .. option:: flycheck-lintr-linters
+      .. defcustom:: flycheck-lintr-linters
 
          Linters to use as a string with an R expression which selects the
          linters to use.
@@ -815,7 +964,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
          This syntax checker requires Sphinx 1.2 or newer.
 
-      .. option:: flycheck-sphinx-warn-on-missing-references
+      .. defcustom:: flycheck-sphinx-warn-on-missing-references
 
          Whether to emit warnings for all missing references.
 
@@ -825,8 +974,9 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
 .. supported-language:: Ruby
 
-   Flycheck checks Ruby with `ruby-rubocop` and `ruby-rubylint`, falling back to
-   `ruby` or `ruby-jruby` for basic syntax checking if those are not available.
+   Flycheck checks Ruby with `ruby-rubocop`, `ruby-reek` and `ruby-rubylint`,
+   falling back to `ruby` or `ruby-jruby` for basic syntax checking if those
+   are not available.
 
    .. syntax-checker:: ruby-rubocop
 
@@ -836,12 +986,25 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
          This syntax checker requires Rubocop 0.34 or newer.
 
-      .. option:: flycheck-rubocop-lint-only
+      .. defcustom:: flycheck-rubocop-lint-only
 
          Whether to suppress warnings about style issues, via the ``--lint``
          option.
 
       .. syntax-checker-config-file:: flycheck-rubocoprc
+
+   .. syntax-checker:: ruby-reek
+
+      Check syntax and lint with reek_.
+
+      .. _Reek: https://github.com/troessner/reek
+
+      .. syntax-checker-config-file:: flycheck-reekrc
+
+      .. note::
+
+         ``flycheck-reekrc`` defaults to ``nil``, because Reek can find its own
+         configuration.
 
    .. syntax-checker:: ruby-rubylint
 
@@ -866,20 +1029,27 @@ to view the docstring of the syntax checker.  Likewise, you may use
 .. supported-language:: Rust
 
    Flycheck checks Rust_ with `rust-cargo` in Cargo projects, or `rust`
-   otherwise.
+   otherwise.  For Cargo projects, you can also use the clippy_ linter with
+   `rust-clippy`.
 
    .. _Rust: https://www.rust-lang.org/
+   .. _clippy: https://github.com/rust-lang-nursery/rust-clippy
 
    .. syntax-checker:: rust-cargo
                        rust
+                       rust-clippy
 
       Check syntax and types with the Rust_ compiler.  In a Cargo_ project the
-      compiler is invoked through ``cargo rustc`` to take Cargo dependencies
+      compiler is invoked through ``cargo check`` to take Cargo dependencies
       into account.
+
+      `rust-clippy` has no configurable options.
 
       .. note::
 
-         These syntax checkers require Rust 1.0 or newer.
+         `rust-cargo` requires Rust 1.17 or newer.
+         `rust` requires Rust 1.7 or newer.
+         `rust-clippy` requires the nightly version of Rust.
 
       .. _Cargo: http://doc.crates.io/index.html
 
@@ -889,47 +1059,99 @@ to view the docstring of the syntax checker.  Likewise, you may use
             Flycheck extension to configure Rust syntax checkers according to
             the current Cargo_ project.
 
-      .. option:: flycheck-rust-args
+      .. defcustom:: flycheck-rust-args
 
-         A list of additional arguments.
+         A list of additional arguments that are passed to rustc.  This option
+         is ignored by `rust-cargo`.
 
-      .. option:: flycheck-rust-check-tests
+      .. defcustom:: flycheck-cargo-check-args
+
+         A list of additional arguments passed to the ``cargo check``
+         subcommand.
+
+      .. defcustom:: flycheck-rust-check-tests
 
          Whether to check test code in Rust.
 
-      .. option:: flycheck-rust-crate-root
+      .. defcustom:: flycheck-rust-crate-root
 
          A path to the crate root for the current buffer, or nil if the current
          buffer is a crate by itself.
 
          `rust-cargo` ignores this option as the crate root is given by Cargo.
 
-      .. option:: flycheck-rust-crate-type
+      .. defcustom:: flycheck-rust-crate-type
 
-         The type of the crate to check, as string for the ``--crate-type``
-         option.
+         For `rust-cargo`, the target type as a string, one of ``lib``, ``bin``,
+         ``example``, ``test`` or ``bench``.  Can also be nil for projects with
+         a single target.
 
-      .. option:: flycheck-rust-binary-name
+         For `rust`, the type of the crate to check, as a string for the
+         ``--crate-type`` option.
 
-         The name of the binary to pass to ``cargo rustc --bin``, as a string.
+      .. defcustom:: flycheck-rust-binary-name
 
-         Only required when `flycheck-rust-crate-type` is ``bin`` and the crate
-         has multiple targets.
+         The name of the binary to pass to ``cargo check --TARGET-TYPE``, as a
+         string.
 
-      .. option:: flycheck-rust-library-path
+         For `rust-cargo`, always required unless `flycheck-rust-crate-type` is
+         ``lib`` or nil, in which case it is ignored.
+
+         Ignored by `rust`.
+
+      .. defcustom:: flycheck-rust-library-path
 
          A list of additional library directories. Relative paths are relative
          to the buffer being checked.
 
-.. supported-language:: Sass
+.. supported-language:: Sass/SCSS
+
+   Flycheck checks SASS with `sass/scss-sass-lint`, falling back to `sass`, and
+   SCSS with  `scss-lint` or `scss-stylelint` falling back to
+   `sass/scss-sass-lint` first and then `scss` if neither is available.
+
+   .. syntax-checker:: scss-lint
+
+      Syntax-check and lint SCSS with SCSS-Lint_.
+
+      .. note::
+
+         This syntax checker requires SCSS-Lint 0.43.2 or newer.
+
+      .. _SCSS-Lint: https://github.com/brigade/scss-lint
+
+      .. syntax-checker-config-file:: flycheck-scss-lintrc
+
+   .. syntax-checker:: sass/scss-sass-lint
+
+      Syntax-check and lint Sass/SCSS with SASS-Lint_.
+
+      .. _SASS-Lint: https://github.com/sasstools/sass-lint
+
+      .. syntax-checker-config-file:: flycheck-sass-lintrc
+
+   .. syntax-checker:: scss-stylelint
+
+      Syntax-check and lint SCSS with stylelint_.
+
+      .. _stylelint: https://stylelint.io
+
+      .. syntax-checker-config-file:: flycheck-stylelintrc
+
+      .. defcustom:: flycheck-stylelint-quiet
+
+         Whether to run stylelint in quiet mode via ``--quiet``.
 
    .. syntax-checker:: sass
+                       scss
 
-      Check syntax with the `Sass <http://sass-lang.com/>`_ compiler.
+      Check SASS and SCSS respectively with the `SCSS compiler
+      <http://sass-lang.com/>`_.
 
-      .. option:: flycheck-sass-compass
+      .. defcustom:: flycheck-sass-compass
+                     flycheck-scss-compass
 
-         Whether to enable the Compass CSS framework via ``--compass``.
+         Whether to enable the Compass CSS framework with ``--compass``.
 
 .. supported-language:: Scala
 
@@ -945,7 +1167,7 @@ to view the docstring of the syntax checker.  Likewise, you may use
          This syntax checker is fairly primitive.  For a better Scala experience
          we recommend Ensime_.
 
-         .. _Ensime: http://ensime.github.io
+         .. _Ensime: http://ensime.org/
 
    .. syntax-checker:: scala-scalastyle
 
@@ -968,34 +1190,14 @@ to view the docstring of the syntax checker.  Likewise, you may use
       Check syntax with ``csc``, the `CHICKEN Scheme <http://call-cc.org/>`_
       compiler.
 
+      .. defcustom:: flycheck-scheme-chicken-args
+
+	 A list of additional options.
+
    .. important::
 
       `Geiser <http://www.nongnu.org/geiser/>`_ must be installed and active for
       this checker to work.
-
-.. supported-language:: SCSS
-
-   Flycheck checks SCSS with `scss-lint`, falling back to `scss`.
-
-   .. syntax-checker:: scss-lint
-
-      Check syntax and lint with SCSS-Lint_.
-
-      .. note::
-
-         This syntax checker requires SCSS-Lint 0.43.2 or newer.
-
-      .. _SCSS-Lint: https://github.com/brigade/scss-lint
-
-      .. syntax-checker-config-file:: flycheck-scss-lintrc
-
-   .. syntax-checker:: scss
-
-      Check syntax with the `SCSS compiler <http://sass-lang.com/>`_.
-
-      .. option:: flycheck-scss-compass
-
-         Whether to enable the Compass CSS framework with ``--compass``.
 
 .. supported-language:: Shell scripting languages
 
@@ -1010,6 +1212,10 @@ to view the docstring of the syntax checker.  Likewise, you may use
       Check Bash_ syntax.
 
       .. _Bash: http://www.gnu.org/software/bash/
+
+      .. defcustom:: flycheck-sh-bash-args
+
+         A list of additional arguments that are passed to bash.
 
    .. syntax-checker:: sh-posix-dash
 
@@ -1031,9 +1237,13 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. _ShellCheck: https://github.com/koalaman/shellcheck/
 
-      .. option:: flycheck-shellcheck-excluded-warnings
+      .. defcustom:: flycheck-shellcheck-excluded-warnings
 
          A list of excluded warnings.
+
+      .. defcustom:: flycheck-shellcheck-follow-sources
+
+         Allow shellcheck to read sourced files.
 
 .. supported-language:: Slim
 
@@ -1051,6 +1261,26 @@ to view the docstring of the syntax checker.  Likewise, you may use
    .. syntax-checker:: sql-sqlint
 
       Check SQL syntax with `Sqlint <https://github.com/purcell/sqlint>`_.
+
+.. supported-language:: systemd Unit Configuration
+
+   .. syntax-checker:: systemd-analyze
+
+      Check systemd unit configuration file syntax with `systemd-analyze`_.
+
+      .. _systemd-analyze: https://www.freedesktop.org/software/systemd/man/systemd-analyze.html
+
+.. supported-language:: Tcl
+
+   .. syntax-checker:: tcl-nagelfar
+
+      Check Tcl syntax with `Nagelfar <http://nagelfar.sourceforge.net/>`_.
+
+.. supported-language:: Text
+
+   .. syntax-checker:: proselint
+
+      Check English prose with `Proselint <http://proselint.com/>`_.
 
 .. supported-language:: TeX/LaTeX
 
@@ -1082,20 +1312,38 @@ to view the docstring of the syntax checker.  Likewise, you may use
 
       .. syntax-checker-config-file:: flycheck-typescript-tslint-config
 
-      .. option:: flycheck-typescript-tslint-rulesdir
+      .. defcustom:: flycheck-typescript-tslint-rulesdir
 
          Additional rules directory, for user created rules.
+
+      .. defcustom:: flycheck-tslint-args
+
+         A list of additional arguments that are passed to tslint.
 
 .. supported-language:: Verilog
 
    .. syntax-checker:: verilog-verilator
 
-      Check syntax with `Verilator <http://www.veripool.org/wiki/verilator>`_.
+      Check syntax with `Verilator <https://www.veripool.org/wiki/verilator>`_.
 
-      .. option:: flycheck-verilator-include-path
+      .. defcustom:: flycheck-verilator-include-path
 
          A list of include directories.  Relative paths are relative to the file
          being checked.
+
+.. supported-language:: VHDL
+
+   .. syntax-checker:: vhdl-ghdl
+
+      Check syntax with `GHDL <http://ghdl.free.fr/>`_.
+
+      .. defcustom:: flycheck-ghdl-language-standard
+
+         The language standard to use as string.
+
+      .. defcustom:: flycheck-ghdl-workdir
+
+         The directory to use for the file library.
 
 .. supported-language:: XML
 
@@ -1104,6 +1352,12 @@ to view the docstring of the syntax checker.  Likewise, you may use
    .. syntax-checker:: xml-xmlstarlet
 
       Check syntax with `XMLStarlet <http://xmlstar.sourceforge.net>`_.
+
+      .. defcustom:: flycheck-xml-xmlstarlet-xsd-path
+                     flycheck-xml-xmllint-xsd-path
+
+         Location of XSD schema to validate against for `xml-xmlstarlet` and
+         `xml-xmllint` respectively.
 
    .. syntax-checker:: xml-xmllint
 

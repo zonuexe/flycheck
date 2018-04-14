@@ -1,4 +1,7 @@
+import * as mocha from 'mocha';
+import * as chai from 'chai';
+
 function invalidAlignment() {
-  let a:string = "test string";
+  var a:string = "test string";
   alert('Hi!')
 }

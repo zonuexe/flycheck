@@ -12,8 +12,8 @@ Teams
 Maintainers
 -----------
 
-* **Sebastian Wiesner** (:gh:`lunaryorn`, owner, GPG key ``5C42FE98``)
-* **Clément Pit--Claudel** (:gh:`cpitclaudel`, owner)
+* **Clément Pit-Claudel** (:gh:`cpitclaudel`, owner)
+* **fmdkdd** (:gh:`fmdkdd`, owner)
 
 We maintain Flycheck and all official extensions within the `Flycheck
 organisation`_, and set the direction and scope of Flycheck.  We review and
@@ -54,6 +54,7 @@ These teams provide support for particular languages in Flycheck.
 Elixir
 ~~~~~~
 
+* Aaron Jensen (:gh:`aaronjensen`)
 * Kári Tristan Helgason (:gh:`kthelgason`)
 
 Mention with ``@flycheck/elixir``.
@@ -79,6 +80,13 @@ Javascript
 
 Mention with ``@flycheck/javascript``.
 
+Lua
+~~~
+
+* Gordon Gao (:gh:`ghprince`)
+
+Mention with ``@flycheck/lua``.
+
 Puppet
 ~~~~~~
 
@@ -101,11 +109,28 @@ TypeScript
 
 Mention with ``@flycheck/typescript``.
 
+Packagers
+=========
+
+We would like to thank all people who package Flycheck on behalf of
+distributions and support our development efforts with their feedback, their
+patches and their testing:
+
+* Sean Whitton (:gh:`spwhitton`) and the `Debian Emacs addon team`_ (Debian
+  packages)
+
+.. _Debian Emacs addon team: https://pkg-emacsen.alioth.debian.org/
+
 Acknowledgements
 ================
 
 We would also like to thank the following people and projects:
 
+* Sebastian Wiesner (:gh:`lunaryorn`) for creating Flycheck in the first place,
+  for taking the time and dedication to maintain it for over 4 years, while
+  maintaining high standards of code quality and nurturing a healthy, active
+  community around it, giving Flycheck the best chances to thrive after his
+  departure.
 * Bozhidar Batsov (:gh:`bbatsov`) for his valuable feedback and his constant
   support and endorsement of Flycheck from the very beginning. Notably he added
   Flycheck to his popular :gh:`Prelude <bbatsov/prelude>` project at a very
@@ -115,8 +140,8 @@ We would also like to thank the following people and projects:
   Flycheck internals, and greatly helped to overcome Sebastian’s initial
   aversion to Emacs Lisp.
 * Martin Grenfell (:gh:`scrooloose`) for the Vim syntax checking extension
-  :gh:`Syntastic <scrooloose/syntastic>` which saved Sebastian’s life back when
-  he was using Vim, and served as inspiration for Flycheck and many of its
+  :gh:`Syntastic <vim-syntastic/syntastic>` which saved Sebastian’s life back
+  when he was using Vim, and served as inspiration for Flycheck and many of its
   syntax checkers.
 * Matthias Güdemann (:gh:`mgudemann`), for his invaluable work on
   Flycheck’s logo.
@@ -126,7 +151,7 @@ We would also like to thank the following people and projects:
   syntax checking, and his very constructive feedback.
 * Steve Purcell (:gh:`purcell`) for his valuable feedback, the fruitful
   discussions and his important ideas about the shape and design of Flycheck,
-  and his indispensible and dedicated work on MELPA, which drives the continuous
+  and his indispensable and dedicated work on MELPA, which drives the continuous
   distribution of Flycheck to its users.
 
 Contributors
@@ -135,15 +160,17 @@ Contributors
 The following people—listed in alphabetical order—contributed substantial code
 to Flycheck:
 
+* Aaron Jensen (:gh:`aaronjensen`)
 * Alain Kalker (:gh:`ackalker`)
 * Alex Reed (:gh:`acr4`)
 * Atila Neves (:gh:`atilaneves`)
 * Bozhidar Batsov (:gh:`bbatsov`)
-* Clément Pit--Claudel (:gh:`cpitclaudel`, maintainer, owner)
+* Clément Pit-Claudel (:gh:`cpitclaudel`, maintainer, owner)
 * Cristian Capdevila (:gh:`capdevc`)
 * Damon Haley (:gh:`dhaley`)
 * David Caldwell (:gh:`caldwell`)
 * David Holm (:gh:`dholm`)
+* DEADB17 (:gh:`DEADB17`)
 * Deokhwan Kim (:gh:`dkim`)
 * Derek Chen-Becker (:gh:`dchenbecker`)
 * Derek Harland (:gh:`donkopotamus`)
@@ -152,15 +179,17 @@ to Flycheck:
 * Drew Wells (:gh:`drewwells`)
 * Erik Hetzner (:gh:`egh`)
 * Fanael Linithien (:gh:`Fanael`)
-* :gh:`fmdkdd`
+* :gh:`fmdkdd` (maintainer, owner)
 * Fred Morcos (:gh:`fredmorcos`)
 * Gereon Frey (:gh:`gfrey`)
+* Gordon Gao (:gh:`ghprince`)
 * Gulshan Singh (:gh:`gsingh93`)
 * Iain Beeston (:gh:`iainbeeston`)
 * Ibrahim Awwal (:gh:`ibrahima`)
 * Jackson Ray Hamilton (:gh:`jacksonrayhamilton`)
 * Jim Hester (:gh:`jimhester`)
 * Jimmy Yuen Ho Wong (:gh:`wyuenho`)
+* Kári Tristan Helgason (:gh:`kthelgason`)
 * Krzysztof Witkowski (:gh:`kwitek`)
 * Lee Adams (:gh:`leeaustinadams`)
 * Lorenzo Villani (:gh:`lvillani`)
@@ -192,7 +221,7 @@ to Flycheck:
 * Sean Gillespie (:gh:`swgillespie`)
 * Sean Salmon (:gh:`phatcabbage`)
 * Sebastian Beyer (:gh:`sebastianbeyer`)
-* Sebastian Wiesner (:gh:`lunaryorn`, founder, maintainer, owner)
+* Sebastian Wiesner (:gh:`lunaryorn`, founder, former maintainer, former owner)
 * Sergey Vinokurov (:gh:`sergv`)
 * Stephen Lewis (:gh:`stephenjlewis`)
 * Steve Purcell (:gh:`purcell`)
